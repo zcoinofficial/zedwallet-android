@@ -60,8 +60,13 @@ public class AuthManager {
     }
 
     public static AuthManager getInstance() {
-        if (instance == null)
-            instance = new AuthManager();
+            if (instance == null){
+                    synchronized (AuthManager.class){
+                         if (instance == null){
+                                            instance = new AuthManager();
+                                                      }
+                                        }
+                       }
         return instance;
     }
 
